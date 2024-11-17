@@ -1,8 +1,10 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +61,12 @@ Route::delete('/api/movies/{id}', function ($id) {
     $movie->delete();
 
     return response()->json(['message' => 'Película eliminada exitosamente']);
+});
+
+// Ruta temporal para ejecutar comandos de Artisan
+Route::get('/run-artisan', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    return 'Artisan commands executed successfully!';
 });

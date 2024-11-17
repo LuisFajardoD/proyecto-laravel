@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -70,3 +69,4 @@ Route::get('/run-artisan', function () {
     Artisan::call('config:cache');
     return 'Artisan commands executed successfully!';
 });
+
